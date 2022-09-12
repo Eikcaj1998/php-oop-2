@@ -4,9 +4,8 @@ class Client
     //variabili d'istanza
     public $name;
     public $surname;
-    public $credit_card;
     //construttore
-    public function __construct($name,$surname,$credit_card)
+    public function __construct($name,$surname)
     {
         $this->name = $name;
         $this->surname = $surname;
