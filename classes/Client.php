@@ -5,9 +5,14 @@ class Client
     public $name;
     public $surname;
     public $credit_card;
+    //construttore
+    public function __construct($name,$surname,$credit_card)
+    {
+        $this->name = $name;
+        $this->surname = $surname;
+    }
+
 }
-$user = new Client();
+$user = new Client('Jackie','Wang');
 var_dump ($user);
-$user->name = 'Jackie';
-$user->surname = 'Wang';
 var_dump ($user -> name);
