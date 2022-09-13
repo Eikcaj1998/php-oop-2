@@ -8,34 +8,24 @@ Alcuni prodotti (es. antipulci) avranno la caratteristica che saranno disponibil
 (es. da maggio ad agosto).
  -->
 <?php
- require_once __DIR__ . '/classes/Product.php';
- require_once __DIR__ . '/classes/Food.php';
- require_once __DIR__ . '/classes/Games.php';
- require_once __DIR__ . '/classes/RegisteredCard.php';
- require_once __DIR__ . '/classes/Client.php';
- 
- $item1 = new Product('star', 50, 'parola1');
+ include_once __DIR__ . '/classes/products/Food.php';
+ include_once __DIR__ . '/classes/customer/Client.php';
+ include_once __DIR__ . '/classes/customer/Registered.php';
+ include_once __DIR__ . '/classes/shipping/Address.php';
+ include_once __DIR__ . '/classes/shopping/CreditCard.php';
 
-$item2 = new Product('moon', 30, 'description');
 
-$items = [$item1,$item2];
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <ul>
-        <?php foreach($items as $item):?>
-            <li>
-                <h2><?= $item->brand ?></h2>
-                <strong><?= $item->getPrice() ?></strong>
-            </li>
-        <?php endforeach ?>
-    </ul>
-</body>
-</html>
+$prodotto = new Food('Scatoletta','cibo per gatti' , 3.50, '2kg' , ['cane'], ['carne','additivi','carote'],"13/09/2024");
+
+$cliente = new Client();
+$cliente->addtocart($prodotto);
+
+$indirizzo = new Address('Jackie Wang', 'Via Rossi', '42123', 'Redbird', "Italy");
+
+
+$carta = new CreditCard('1318646464','visa','13-09-2024');
+
+$registered_user = new Registered('jackiewang','ja22@gmail.com',$indirizzo,$carta);
+
+$registered_user->addtocart($prodotto);
+$registered_user->placeorder();
